@@ -652,7 +652,7 @@ class _ProductChecker:
         # Check all of the fields and headers for missing/valid values.
         try:
             bad_tagline = response.get("tagline", None) != "You Know, for Search"
-            bad_build_flavor = version.get("build_flavor", None) != "default"
+            bad_build_flavor = version.get("build_flavor", None) not in ["default", "oss"]
             bad_product_header = (
                 headers.get("x-elastic-product", None) != "Elasticsearch"
             )
